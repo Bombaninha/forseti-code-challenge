@@ -13,6 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet"> 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://kit.fontawesome.com/7f714d00cc.js" crossorigin="anonymous"></script>
 
     <title>@yield('title')</title>
     
@@ -31,7 +32,7 @@
       }
     </style>
 
-    @yield('styles')
+    @stack('styles')
 
   </head>
   <body>
@@ -48,7 +49,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
 
-    @yield('scripts')
+    @stack('scripts')
     
   </body>
 </html>
