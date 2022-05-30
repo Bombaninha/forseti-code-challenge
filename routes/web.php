@@ -13,5 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\ScraperController::class, 'index'])->name('index');
-Route::get('scraper', [App\Http\Controllers\ScraperController::class, 'scraper'])->name('scraper');
+Route::get('/', [App\Http\Controllers\TidingController::class, 'index'])->name('tidings.index');
+Route::delete('/', [App\Http\Controllers\TidingController::class, 'deleteAll'])->name('tidings.deleteAll');
+
+Route::post('scrap', [App\Http\Controllers\ScraperController::class, 'scrap'])->name('scrapers.scrap');
