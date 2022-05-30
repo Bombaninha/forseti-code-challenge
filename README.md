@@ -114,3 +114,7 @@ Além disso, dois componentes foram criados a fim de serem reutilizados em outra
 ## Questions
 
 Não elaborou-se nenhum mecanismo para evitar duplicação, uma vez que apesar da notícias ter o mesmo título, pode ser que ela redirecione para um *link* diferente.
+
+## Deploy
+
+Caso haja problemas em testar localmente, o sistema está hospedado [aqui](http://forseti-code-challenge.herokuapp.com/).
