@@ -2,7 +2,7 @@
 
 @section('title', 'Listagem de notícias')
  
-@section('styles')
+@push('styles')
     <style>    
         .text-justify {
             text-align: justify;
@@ -12,9 +12,14 @@
             height: 160px;
         }
     </style>
-@endsection
+@endpush
 
 @section('content')
+
+    <x-backToTopButton />
+    
+    <x-deleteAlert />
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-8">
@@ -30,7 +35,7 @@
                     <form method="post" class="delete-tidings" action="{{ route('tidings.deleteAll') }}">
                         @method('DELETE')    
                         @csrf
-                        <button type="submit" class="btn btn-danger">Excluir todas notícias</button>
+                        <button type="submit" class="btn btn-danger delete-all">Excluir todas notícias</button>
                     </form>
                 @endif
             </div>
@@ -55,24 +60,4 @@
             {{ $tidings->links() }}
         @endif
     </div>
-@endsection
-
-@section('scripts')
-    <script>
-        document.querySelector('form button.btn-danger').addEventListener('click', function(event) {
-            event.preventDefault();
-
-            swal({
-                dangerMode: true,
-                title: 'Você tem certeza disso?',
-                text: 'Todas as notícias serão excluídas permanentemente!',
-                icon: 'warning',
-                buttons: ["Não, cancele essa ação!", "Sim, eu aceito!"],
-            }).then(function(value) {
-                if (value) {
-                    document.querySelector('form.delete-tidings').submit();
-                }
-            });
-        });
-   </script>
 @endsection
