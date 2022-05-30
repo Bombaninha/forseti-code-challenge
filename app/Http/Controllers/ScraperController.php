@@ -13,13 +13,7 @@ class ScraperController extends Controller
 {
     private $results = array();
 
-    public function index()
-    {
-        $tidings = Tiding::all();
-        return view('scraper.scraper', compact('tidings'));
-    }
-
-    public function scraper()
+    public function scrap()
     {
         $itemsPerPage = 30;
         $totalPages = 5;
@@ -55,7 +49,7 @@ class ScraperController extends Controller
 
         Tiding::insert($this->results);
 
-        return redirect()->route('index');
+        return redirect()->back();
         /*
         foreach($this->results as $tiding) {
             Tiding::create([
