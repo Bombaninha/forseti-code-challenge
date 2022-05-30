@@ -11,13 +11,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class ComprasnetService {
 
-    public function test($url) {
-        $url = 'https://www.gov.br/compras/pt-br/acesso-a-informacao/noticias';
-        $client = new Client();
-        $page = $client->request('GET', $url);
-        return $page;  
-    }
-
+    // Captura a data de um nodo e coloca no formato d-m-Y H:i:s
     public function extractDateInformation(Crawler $dateNode) : array {
         $date = $dateNode->eq(0)->text();
         $hours = Str::replace('h', ':', $dateNode->eq(1)->text());
@@ -29,6 +23,7 @@ class ComprasnetService {
         ); 
     }
 
+    // Extraí informações de um link (link e título)
     public function extractLinkInformation(Crawler $linkNode) : array {
         $link = $linkNode->attr('href');
         $title = $linkNode->text();
@@ -39,6 +34,7 @@ class ComprasnetService {
         );
     }
 
+    // Extraí informações necessárias de uma única página
     public function scrapSinglePage(string $url) : array {
         $client = new Client();
         $page = $client->request('GET', $url);
@@ -62,7 +58,7 @@ class ComprasnetService {
         return $items->toArray();
     }
 
-
+    // Extraí informações necessárias de múltiplas páginas que possuem um paginador
     public function scrapMultiplePagesWithPaginator(int $itemsPerPage, int $totalOfPages, string $baseUrl, string $urlParam) : array {
         $allItems = collect();
 
