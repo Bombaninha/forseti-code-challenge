@@ -16,4 +16,8 @@ class Tiding extends Model
         'link',
         'posted_at'
     ];
+
+    protected $dates = [
+        'posted_at'
+    ];
 }
