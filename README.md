@@ -1,65 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Forseti Code Challenge
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Getting Started
 
-## About Laravel
+Para rodar o projeto, é necessário possuir PHP, Composer e Mysql. Para elaboração, utilizou-se as seguintes versões (as quais servem como sugestão para uso):
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP 8.1.6
+- Composer 2.3.5
+- MySQL 8.0.29
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## How to run
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Criando um arquivo com variáveis de ambiente
 
-## Learning Laravel
+O primeiro ponto é criar uma cópia do arquivo .env.example como .env:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+cp .env.example .env
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Com isso, será publicado um arquivo que contém as variáveis de ambiente necessárias. 
 
-## Laravel Sponsors
+### Editando os valores do arquivo .env
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Em especial, deve-se editar os valores para as seguintes variáveis:
 
-### Premium Partners
+```
+APP_NAME=Forseti
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=forseti_code_challenge
+DB_USERNAME=forseti
+DB_PASSWORD=forseti123
+```
 
-## Contributing
+> Os valores atuais foram utilizados durante o desenvolvimento e servem como sugestão.
+> É necessário criar um banco de dados com o nome definido em DB_DATABASE, além de que o DB_USERNAME e DB_PASSWORD devem ser as credencias de um usuário com todos os privilégios. Para isso, pode-se ler mais em ["Como criar um usuário em MySQL com todas privilégios"](https://phoenixnap.com/kb/how-to-create-new-mysql-user-account-grant-privileges).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Gerando uma chave única para a aplicação
 
-## Code of Conduct
+Em seguida, é necessário gerar uma chave única para a aplicação através de:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+php artisan key:generate
+```
 
-## Security Vulnerabilities
+### Instalando dependências do projeto
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Ao rodar o seguinte comando, todas as dependências do projeto serão publicadas na pasta *vendor*.
 
-## License
+```
+composer install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# forseti-code-challenge
+### Banco de dados
+
+Com o banco de dados criado anteriormente, é necessário rodar as *migrations* que gerarão as tabelas do projeto, através de:
+
+```
+php artisan migrate
+```
+
+### Abrindo o servidor
+
+Por fim, deve-se gerar uma porta que estará rodando o servidor.
+
+```
+php artisan serve
+```
+
+Com isso, ocorrerá um *bind* na [porta 8000 do *localhost*](http://localhost:8000/). 
