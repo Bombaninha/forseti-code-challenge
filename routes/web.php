@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\TidingController::class, 'index'])->name('tidings.index');
 Route::delete('/', [App\Http\Controllers\TidingController::class, 'deleteAll'])->name('tidings.deleteAll');
 
-Route::post('scrap', [App\Http\Controllers\ScraperController::class, 'scrap'])->name('scrapers.scrap');
+Route::post('scrap', [App\Http\Controllers\TidingScraperController::class, 'scrap'])->name('scrapers.scrap');
