@@ -10,6 +10,10 @@ Para rodar o projeto, é necessário possuir PHP, Composer e Mysql. Para elabora
 - Composer 2.3.5
 - MySQL 8.0.29
 
+## Main Packages
+
+Para elaborar o *scraping*, utilizou-se o pacote [Goutte](https://packagist.org/packages/weidner/goutte).
+
 ## Architecture
 
 A arquitetura do projeto é baseada no modelo de MVC, com uma camada a mais de serviços (*Services*), a qual é responsável por utilizar recursos externos. 
