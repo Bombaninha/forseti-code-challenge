@@ -48,20 +48,20 @@ DB_PASSWORD=forseti123
 > Os valores atuais foram utilizados durante o desenvolvimento e servem como sugestão.
 > É necessário criar um banco de dados com o nome definido em DB_DATABASE, além de que o DB_USERNAME e DB_PASSWORD devem ser as credencias de um usuário com todos os privilégios. Para isso, pode-se ler mais em ["Como criar um usuário em MySQL com todas privilégios"](https://phoenixnap.com/kb/how-to-create-new-mysql-user-account-grant-privileges).
 
-### Gerando uma chave única para a aplicação
-
-Em seguida, é necessário gerar uma chave única para a aplicação através de:
-
-```
-php artisan key:generate
-```
-
 ### Instalando dependências do projeto
 
 Ao rodar o seguinte comando, todas as dependências do projeto serão publicadas na pasta *vendor*.
 
 ```
 composer install
+```
+
+### Gerando uma chave única para a aplicação
+
+Em seguida, é necessário gerar uma chave única para a aplicação através de:
+
+```
+php artisan key:generate
 ```
 
 ### Banco de dados
