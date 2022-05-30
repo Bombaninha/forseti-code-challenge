@@ -46,15 +46,25 @@ class ScraperController extends Controller
                 $item = array(
                     'title' => $title,
                     'link' => $link,
-                    'timestamp' => $timestamp
+                    'posted_at' => $timestamp
                 );
                 
                 array_push($this->results, $item);
             });
         }
 
-        dd($this->results);
+        Tiding::insert($this->results);
 
+        return redirect()->route('index');
+        /*
+        foreach($this->results as $tiding) {
+            Tiding::create([
+                'title' => $tiding['title'],
+                'link' => $tiding['link'],
+                'posted_at' => $tiding['']
+            ]);
+        }
+        */
         //$temp = array_unique(array_column($this->results, 'link'));
         //$unique_arr = array_intersect_key($this->results, $temp);
         //return view('scraper.scraper');
