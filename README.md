@@ -1,5 +1,7 @@
 # Forseti Code Challenge
 
+O desafio consiste em fazer um scraper que salve informações importantes sobre as cinco primeiras páginas de notícia no [Comprasnet](https://www.gov.br/compras/pt-br/acesso-a-informacao/noticias).
+
 ## Getting Started
 
 Para rodar o projeto, é necessário possuir PHP, Composer e Mysql. Para elaboração, utilizou-se as seguintes versões (as quais servem como sugestão para uso):
@@ -7,6 +9,10 @@ Para rodar o projeto, é necessário possuir PHP, Composer e Mysql. Para elabora
 - PHP 8.1.6
 - Composer 2.3.5
 - MySQL 8.0.29
+
+## Architecture
+
+A arquitetura do projeto é baseada no modelo de MVC, com uma camada a mais de serviços (*Services*), a qual é responsável por utilizar recursos externos. 
 
 ## How to run
 
@@ -71,3 +77,36 @@ php artisan serve
 ```
 
 Com isso, ocorrerá um *bind* na [porta 8000 do *localhost*](http://localhost:8000/). 
+
+## How to test
+
+Para executar os testes construídos, é necessário executar:
+
+```
+php artisan test
+```
+
+## Project Flow
+
+A página inicial contém a listagem de todas as notícias que foram buscadas no portal Comprasnet.
+
+![foto](https://user-images.githubusercontent.com/40179398/171052256-41a1fcdb-0b01-4716-999c-f51cec06192d.jpg)
+
+Ao clicar no botão de buscar, o *scraper* realiza a busca e o carregamento das notícias no banco de dados.
+
+![foto(1)](https://user-images.githubusercontent.com/40179398/171052544-4096d566-02c5-4414-8d55-4dde774f8ed0.jpg)
+
+
+> Ao clicar em clique aqui, o usuário é redirecionado para a notícia em questão.
+
+Além disso, dois componentes foram criados a fim de serem reutilizados em outras páginas, os quais são um botão *back to top* e um alerta de confirmação.
+
+![foto(2)](https://user-images.githubusercontent.com/40179398/171052734-9b81375a-4e30-418c-b5cd-7bce528c0e36.jpg)
+
+![foto(3)](https://user-images.githubusercontent.com/40179398/171052794-834684b6-1809-4c36-9cf8-e4aea771687c.jpg)
+
+> Ao exluir as notícias, é possível buscar novamente com o *scraper*.
+
+## Questions
+
+Não elaborou-se nenhum mecanismo para evitar duplicação, uma vez que apesar da notícias ter o mesmo título, pode ser que ela redirecione para um *link* diferente.
